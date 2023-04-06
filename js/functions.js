@@ -7,6 +7,10 @@ function palindrome(str) {
  console.log(palindrome('1232'))
  
 // Длина строки
-function lineLength(str) {
-    str = 
-}
+function getLine (lineLenght, maxLenght) {
+        if (lineLenght.length  <= maxLenght) {
+        console.log(lineLenght.length)
+        } else {
+           console.log('The string cannot exceed ' + maxLenght + ' symbols' )}
+        }
+ //       
