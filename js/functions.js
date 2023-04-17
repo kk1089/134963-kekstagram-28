@@ -1,7 +1,7 @@
 // Полинддром 
 function palindrome(str) {
   const newStr = str.toLowerCase().replace(/\s|[,.!?"/-]/g, "");
-  return newStr.split('').reverse().join('') == str;
+  return newStr.split('').reverse().join('') == newStr;
 }
 
 
@@ -57,7 +57,7 @@ function padString(originString, miniLength, addSymbols) {
     if (j < addSymbols.length - 1) {
 
       j++;
-      
+
     } else {
       originString = textBegin + originString;
       j = 0;
