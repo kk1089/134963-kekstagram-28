@@ -1,29 +1,18 @@
-// Полинддром 
-function palindrome(str) {
-  const newStr = str.toLowerCase().replace(/\s|[,.!?"/-]/g, "");
-  return newStr.split('').reverse().join('') == newStr;
-}
+
+const isPalindrome = (str) => {
+  const newStr = str.toLowerCase().replace(/\s|[,.!?"/-]/g, '');
+  return newStr.split('').reverse().join('') === newStr;
+};
 
 
-// Длина строки 
 function checkStringLength(lineLength, maxLength) {
-
-  if (lineLength.length <= maxLength) {
-    return true
-  } else {
-    return false
-  }
+  return lineLength.length <= maxLength;
 }
-/* Функция, которая принимает строку,
- извлекает содержащиеся в ней цифры от 0 до 9 и возвращает их в 
- виде целого положительного числа. 
- Если в строке нет ни одной цифры, 
- функция должна вернуть NaN */
-function fetchDigits(text) {
+
+const fetchDigits = (text) => {
   let digits = '';
 
   for (let i = 0; i < text.length; i++) {
-
     if (!isNaN(text[i])) {
       const digit = parseInt(text[i], 10);
       digits += digit;
@@ -31,23 +20,13 @@ function fetchDigits(text) {
   }
 
   return parseInt(digits, 10);
-}
+};
 
-/*Функция, которая принимает три параметра: 
- исходную строку, минимальную длину и строку с добавочными символами — и возвращает исходную строку,
- дополненную указанными символами до заданной длины.
- Символы добавляются в начало строки.
- Если исходная строка превышает заданную длину,
- она не должна обрезаться.
- Если «добивка» слишком длинная, она обрезается с конца.  */
-// Ничего не понятно, но очень интересно
-function padString(originString, miniLength, addSymbols) {
-
+const padString = (originString, miniLength, addSymbols) => {
   if (originString.length > miniLength) {
-
-    return originString
+    return originString;
   }
-  let cyclesCount = miniLength - originString.length;
+  const cyclesCount = miniLength - originString.length;
   let j = 0;
   let textBegin = '';
 
@@ -55,15 +34,12 @@ function padString(originString, miniLength, addSymbols) {
     textBegin = textBegin + addSymbols[j];
 
     if (j < addSymbols.length - 1) {
-
       j++;
-
     } else {
       originString = textBegin + originString;
       j = 0;
       textBegin = '';
     }
-
   }
   return textBegin + originString;
-}
+};
