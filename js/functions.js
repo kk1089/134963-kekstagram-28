@@ -5,20 +5,16 @@ const isPalindrome = (str) => {
 };
 
 
-function checkStringLength(lineLength, maxLength) {
-  return lineLength.length <= maxLength;
-}
+const checkStringLength = (lineLength, maxLength) => lineLength.length <= maxLength;
 
 const fetchDigits = (text) => {
   let digits = '';
 
   for (let i = 0; i < text.length; i++) {
     if (!isNaN(text[i])) {
-      const digit = parseInt(text[i], 10);
-      digits += digit;
+      digits += text[i];
     }
   }
-
   return parseInt(digits, 10);
 };
 
