@@ -64,7 +64,7 @@ const createComments = () => {
 
   for (let i = 0; i < commentsCount; i++) {
     const comment = {
-      id: i + 1,
+      id: getRandomInteger(1, 1000),
       avatar: 'img/avatar-{getRandomInteger(1, 6)}.svg',
       message: getRandomArrayElement(COMMENTS),
       name: getRandomArrayElement(NAMES),
@@ -73,7 +73,6 @@ const createComments = () => {
   }
   return comments;
 };
-console.log(createComments());
 
 
 // Функция для создания объекта
