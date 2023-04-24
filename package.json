@@ -12,8 +12,6 @@
   },
   "devDependencies": {
     "browser-sync": "^2.29.1",
-    "eslint": "^8.38.0",
-    "eslint-config-google": "^0.14.0",
     "eslint-config-htmlacademy": "9.0.0",
     "eslint-plugin-react": "^7.32.2"
   },
