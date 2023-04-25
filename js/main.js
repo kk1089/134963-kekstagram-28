@@ -67,7 +67,7 @@ const createComments = () => {
   for (let i = 0; i < commentsCount; i++) {
     const comment = {
       id: getRandomInteger(1, 1000),
-      avatar: 'img/avatar-${getRandomInteger(1, 6)}.svg',
+      avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
       message: getRandomArrayElement(COMMENTS),
       name: getRandomArrayElement(NAMES),
     };
@@ -84,7 +84,7 @@ const createObjects = () => {
   for (let i = 0; i < objectsCount; i++) {
     const object = {
       id: i + 1,
-      url: 'photos/${getRandomInteger(1, 25)}.jpg',
+      url: `photos/${getRandomInteger(1, 25)}.jpg`,
       description:  getRandomArrayElement(DESCRIPTION),
       likes: getRandomInteger(15, 200),
       comments: createComments(),
