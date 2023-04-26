@@ -45,7 +45,7 @@ const DESCRIPTION = [
   'Не знаю, как оттуда выбраться.',
   'Замена прошла успехно.'
 ];
-
+// Количество объектов
 const objectsCount = 25;
 
 // функия случайного числа из диапозона
@@ -75,7 +75,6 @@ const createComments = () => {
   }
   return comments;
 };
-
 
 // Функция для создания объекта
 const createObjects = () => {
