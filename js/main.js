@@ -1,3 +1,6 @@
 import {createObjects} from './data.js';
 
-createObjects ();
+const data = createObjects();
+
+console.log(data);
+
