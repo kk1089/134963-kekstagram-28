@@ -1,5 +1,4 @@
-import {getRandomArrayElement} from './util.js';
-import {getRandomInteger} from './util.js';
+import {getRandomArrayElement, getRandomInteger} from './util.js';
 
 // Массив имен
 const NAMES = [
@@ -87,6 +86,5 @@ const createObjects = () => {
 
   return objects;
 };
-console.log(createObjects());
 
 export {createObjects};

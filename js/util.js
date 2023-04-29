@@ -8,5 +8,4 @@ const getRandomInteger = (a, b) => {
   // Функиця по поиску случайного элемента в переданном массиве.
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-export {getRandomInteger};
-export {getRandomArrayElement};
+export {getRandomInteger, getRandomArrayElement};
