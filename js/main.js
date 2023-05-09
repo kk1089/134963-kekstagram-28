@@ -1,6 +1,6 @@
 import {createObjects} from './data.js';
-import './popup.js';
+import {renderPictures} from './miniatures.js';
 const data = createObjects();
+renderPictures(data);
 
-console.log(data);
 
