@@ -1,5 +1,4 @@
-import {showBigPicture} from './big-picture';
-
+import {showBigPhoto} from './big-picture';
 const picturesElement = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture')
   .content
@@ -33,7 +32,7 @@ const renderMiniatures = (photos) => {
     }
     const photo = photos.find((item) => item.id === +thumbnail.dataset.photoId);
 
-    showBigPicture(photo);
+    showBigPhoto(photo);
 
   });
   renderPictures(photos);
