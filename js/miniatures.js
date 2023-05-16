@@ -1,8 +1,6 @@
-import {showBigPhoto} from './big-picture';
+import {showBigPhoto} from './big-picture.js';
 const picturesElement = document.querySelector('.pictures');
-const pictureTemplate = document.querySelector('#picture')
-  .content
-  .querySelector('.picture');
+const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
 const renderPictures = (photos) => {
 
