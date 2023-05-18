@@ -17,6 +17,7 @@ const hideBigPhoto = () => {
   commentsLoader.classList.remove('hidden');
   document.removeEventListener('keydown', onDocumentKeydown);
   closeButton.removeEventListener('click', onCloseButton);
+  commentsShow = 0;
 };
 
 function onDocumentKeydown (evt) {
@@ -63,6 +64,7 @@ const renderComments = (comments) => {
   socialComments.innerHTML = '';
   socialComments.append(fragment);
   commentCounter.innerHTML = `${commentsShow } из <span class="comment-count">${comments.length}</span> коментариев`;
+  return renderComments;
 };
 
 commentsLoader.addEventListener('click', () => {
