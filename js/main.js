@@ -1,6 +1,8 @@
 import {createObjects} from './data.js';
-import {renderPictures} from './miniatures.js';
-const data = createObjects();
-renderPictures(data);
+import {setPIctureListener, renderPictures} from './miniatures.js';
 
+
+const data = createObjects();
+setPIctureListener(data);
+renderPictures(data);
 

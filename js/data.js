@@ -54,7 +54,7 @@ const objectsCount = 25;
 //Функиця для создания commets
 const createComments = () => {
   const comments = [];
-  const commentsCount = getRandomInteger(1, 2);
+  const commentsCount = getRandomInteger(1, 10);
 
   for (let i = 0; i < commentsCount; i++) {
     const comment = {
