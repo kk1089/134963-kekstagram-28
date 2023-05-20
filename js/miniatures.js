@@ -3,7 +3,6 @@ const picturesElement = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
 const renderPictures = (photos) => {
-
   const pictureFragment = document.createDocumentFragment();
 
   photos.forEach(({likes, comments, url, id, description}) => {
@@ -19,21 +18,19 @@ const renderPictures = (photos) => {
   });
 
   picturesElement.appendChild(pictureFragment);
-
 };
-const renderMiniatures = (photos) => {
+
+const setPIctureListener = (photos) => {
 
   picturesElement.addEventListener('click', (evt) => {
     const thumbnail = evt.target.closest('[data-photo-id]');
+    const photo = photos.find((item) => item.id === +thumbnail.dataset.photoId);
     if (!thumbnail) {
       return;
     }
-    const photo = photos.find((item) => item.id === +thumbnail.dataset.photoId);
 
     showBigPhoto(photo);
-
   });
-  renderPictures(photos);
 };
 
-export {renderPictures, renderMiniatures};
+export {renderPictures, setPIctureListener};
