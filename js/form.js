@@ -1,3 +1,6 @@
+import {resetScale} from './scale.js';
+import {resetEffects} from './effects.js';
+
 const body = document.querySelector('body');
 const form = document.querySelector('.img-upload__form');
 const uploadFile = document.querySelector('#upload-file');
@@ -5,7 +8,7 @@ const overlay = document.querySelector('.img-upload__overlay');
 const uploadCancelButton = document.querySelector('#upload-cancel');
 const hashtagElement = document.querySelector('.text__hashtags');
 const descpriptionElement = document.querySelector('.text__description');
-const submitButton = document.querySelector('.img-upload__submit');
+// const submitButton = document.querySelector('.img-upload__submit');
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-я0-9]{1,19}$/i;
@@ -21,6 +24,7 @@ const showModal = () => {
   overlay.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
+  resetScale();
 };
 
 const hideModal = () => {
@@ -29,6 +33,8 @@ const hideModal = () => {
   document.removeEventListener('keydown', onDocumentKeydown);
   form.reset();
   pristine.reset();
+  resetScale();
+  resetEffects();
 };
 
 const isElementFocus = () =>
@@ -72,19 +78,6 @@ const onCancelButton = () => {
   hideModal();
 };
 
-const blockSubmitButton = () => submitButton.disabled === true;
-
-const unblockSUbmitButton = () => submitButton.disabled === false;
-
-function onSubmitForm() {
-  const isvalid = pristine.validate();
-  if(isvalid){
-    blockSubmitButton();
-  } else {
-    unblockSUbmitButton();
-  }
-
-}
 
 uploadFile.addEventListener('change', onFileInputChange);
 uploadCancelButton.addEventListener('click', onCancelButton);
