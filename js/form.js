@@ -33,7 +33,6 @@ const hideModal = () => {
   document.removeEventListener('keydown', onDocumentKeydown);
   form.reset();
   pristine.reset();
-  resetScale();
   resetEffects();
 };
 
@@ -65,12 +64,6 @@ const validateTags = (value) => {
   return isValidCount(tags) && isUniqueTags(tags) && tags.every(isValidTag);
 };
 
-pristine.addValidator(
-  hashtagElement,
-  validateTags,
-  TAG_ERROR_TEXT
-);
-
 const onFileInputChange = () => {
   showModal();
 };
@@ -78,8 +71,16 @@ const onCancelButton = () => {
   hideModal();
 };
 
+const setupForm = () => {
+  uploadFile.addEventListener('change', onFileInputChange);
+  uploadCancelButton.addEventListener('click', onCancelButton);
 
-uploadFile.addEventListener('change', onFileInputChange);
-uploadCancelButton.addEventListener('click', onCancelButton);
+  pristine.addValidator(
+    hashtagElement,
+    validateTags,
+    TAG_ERROR_TEXT
+  );
+};
 
-export{hideModal};
+
+export{setupForm};

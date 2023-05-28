@@ -78,7 +78,7 @@ const updateSlider = () => {
     start: chosenEffect.max,
   });
 
-  if(isDefault()){
+  if (isDefault()){
     hideSlider();
   } else {
     showSlider();
@@ -94,16 +94,18 @@ const onEffectsChange = (evt) => {
   updateSlider();
 };
 
-noUiSlider.create(sliderElement, {
-  range: {
-    min: DEFAULT_EFFECT.min,
-    max: DEFAULT_EFFECT.max,
-  },
-  start: DEFAULT_EFFECT.max,
-  step: DEFAULT_EFFECT.step,
-  connect: 'lower',
-});
-hideSlider();
+const initSlider = () => {
+  noUiSlider.create(sliderElement, {
+    range: {
+      min: DEFAULT_EFFECT.min,
+      max: DEFAULT_EFFECT.max,
+    },
+    start: DEFAULT_EFFECT.max,
+    step: DEFAULT_EFFECT.step,
+    connect: 'lower',
+  });
+};
+
 
 const onSliderUpdate = () => {
   const sliderValue = sliderElement.noUiSlider.get();
@@ -118,7 +120,12 @@ const resetEffects = () => {
   updateSlider();
 };
 
-effectsElement.addEventListener('change', onEffectsChange);
-sliderElement.noUiSlider.on('update', onSliderUpdate);
+const setEffectsSlider = () => {
+  initSlider();
+  hideSlider();
+  effectsElement.addEventListener('change', onEffectsChange);
+  sliderElement.noUiSlider.on('update', onSliderUpdate);
 
-export {resetEffects};
+};
+
+export {resetEffects, setEffectsSlider};

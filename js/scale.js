@@ -16,7 +16,8 @@ const scaleImg = (value) => {
 const onSmallControlClick = () => {
   const newElement = parseInt(contollValue.value, 10);
   let newValue = newElement - STEP;
-  if(newValue < MIN_STEP) {
+
+  if (newValue < MIN_STEP) {
     newValue = MIN_STEP;
   } else {
     scaleImg(newValue);
@@ -26,6 +27,7 @@ const onSmallControlClick = () => {
 const onbigControllClick = () => {
   const newElement = parseInt(contollValue.value, 10);
   let newValue = newElement + STEP;
+
   if (newValue > MAX_STEP) {
     newValue = MAX_STEP;
   } else {
@@ -34,7 +36,10 @@ const onbigControllClick = () => {
 };
 const resetScale = () => scaleImg(DEFAULT);
 
-smallControl.addEventListener('click', onSmallControlClick);
-bigControll.addEventListener('click', onbigControllClick);
 
-export {resetScale};
+const setScaleListener = () => {
+  smallControl.addEventListener('click', onSmallControlClick);
+  bigControll.addEventListener('click', onbigControllClick);
+};
+
+export { resetScale, setScaleListener};

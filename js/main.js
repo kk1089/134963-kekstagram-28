@@ -1,9 +1,13 @@
 import {createObjects} from './data.js';
-import {setPIctureListener, renderPictures} from './miniatures.js';
-import {hideModal} from './form.js';
+import {setPictureListener, renderPictures} from './miniatures.js';
+import {setupForm} from './form.js';
+import {setEffectsSlider} from './effects.js';
+import {setScaleListener} from './scale.js';
 
 const data = createObjects();
-setPIctureListener(data);
+setPictureListener(data);
 renderPictures(data);
-hideModal();
+setEffectsSlider();
+setScaleListener();
+setupForm();
 
