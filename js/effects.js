@@ -60,13 +60,9 @@ const effectLevelElement = document.querySelector('.effect-level__value');
 
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
 
-const showSlider = () => {
-  sliderContainerElement.classList.remove('hidden');
-};
+const showSlider = () => sliderContainerElement.classList.remove('hidden');
 
-const hideSlider = () => {
-  sliderContainerElement.classList.add('hidden');
-};
+const hideSlider = () => sliderContainerElement.classList.add('hidden');
 
 const updateSlider = () => {
   sliderElement.noUiSlider.updateOptions({
