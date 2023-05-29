@@ -40,7 +40,6 @@ const isElementFocus = () =>
   document.activeElement === hashtagElement ||
   document.activeElement === descpriptionElement;
 
-
 function onDocumentKeydown(evt) {
   if (evt.key === 'Escape' && !isElementFocus()) {
     evt.preventDefault();
