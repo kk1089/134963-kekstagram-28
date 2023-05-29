@@ -24,7 +24,6 @@ const showModal = () => {
   overlay.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
-  resetScale();
 };
 
 const hideModal = () => {
@@ -34,6 +33,7 @@ const hideModal = () => {
   form.reset();
   pristine.reset();
   resetEffects();
+  resetScale();
 };
 
 const isElementFocus = () =>
@@ -67,13 +67,13 @@ const validateTags = (value) => {
 const onFileInputChange = () => {
   showModal();
 };
-const onCancelButton = () => {
+const onCancelButtonClick = () => {
   hideModal();
 };
 
 const setupForm = () => {
   uploadFile.addEventListener('change', onFileInputChange);
-  uploadCancelButton.addEventListener('click', onCancelButton);
+  uploadCancelButton.addEventListener('click', onCancelButtonClick);
 
   pristine.addValidator(
     hashtagElement,
