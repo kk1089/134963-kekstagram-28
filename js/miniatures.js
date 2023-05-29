@@ -20,17 +20,19 @@ const renderPictures = (photos) => {
   picturesElement.appendChild(pictureFragment);
 };
 
-const setPIctureListener = (photos) => {
+const setPictureListener = (photos) => {
 
   picturesElement.addEventListener('click', (evt) => {
     const thumbnail = evt.target.closest('[data-photo-id]');
-    const photo = photos.find((item) => item.id === +thumbnail.dataset.photoId);
+
     if (!thumbnail) {
       return;
     }
+
+    const photo = photos.find((item) => item.id === +thumbnail.dataset.photoId);
 
     showBigPhoto(photo);
   });
 };
 
-export {renderPictures, setPIctureListener};
+export {renderPictures, setPictureListener};
