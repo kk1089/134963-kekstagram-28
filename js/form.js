@@ -64,12 +64,9 @@ const validateTags = (value) => {
   return isValidCount(tags) && isUniqueTags(tags) && tags.every(isValidTag);
 };
 
-const onFileInputChange = () => {
-  showModal();
-};
-const onCancelButtonClick = () => {
-  hideModal();
-};
+const onFileInputChange = () => showModal();
+
+const onCancelButtonClick = () => hideModal();
 
 const setupForm = () => {
   uploadFile.addEventListener('change', onFileInputChange);
