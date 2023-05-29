@@ -85,6 +85,7 @@ const onEffectsChange = (evt) => {
   if(!evt.target.classList.contains('effects__radio')) {
     return;
   }
+
   chosenEffect = EFFECTS.find((effect) => effect.name === evt.target.value);
   imgElement.className = `effects__preview--${chosenEffect.name}`;
   updateSlider();
@@ -101,7 +102,6 @@ const initSlider = () => {
     connect: 'lower',
   });
 };
-
 
 const onSliderUpdate = () => {
   const sliderValue = sliderElement.noUiSlider.get();

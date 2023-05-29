@@ -34,8 +34,8 @@ const onbigControllClick = () => {
     scaleImg(newValue);
   }
 };
-const resetScale = () => scaleImg(DEFAULT);
 
+const resetScale = () => scaleImg(DEFAULT);
 
 const setScaleListener = () => {
   smallControl.addEventListener('click', onSmallControlClick);
