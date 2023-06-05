@@ -8,11 +8,15 @@ const overlay = document.querySelector('.img-upload__overlay');
 const uploadCancelButton = document.querySelector('#upload-cancel');
 const hashtagElement = document.querySelector('.text__hashtags');
 const descpriptionElement = document.querySelector('.text__description');
-// const submitButton = document.querySelector('.img-upload__submit');
+const submitButton = document.querySelector('.img-upload__submit');
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-я0-9]{1,19}$/i;
 const TAG_ERROR_TEXT = 'Хештеги введёны неверно.';
+const SubmitButtonText = {
+  IDLE: 'Сохранить',
+  SENDING: 'Сохраняю...'
+};
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
@@ -78,5 +82,27 @@ const setupForm = () => {
   );
 };
 
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = SubmitButtonText.SENDING;
+};
 
-export{setupForm};
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = SubmitButtonText.IDLE;
+};
+
+const setOnFormSubmit = (callback) => {
+  form.addEventListener('submit', async(evt) => {
+    evt.preventDefault();
+    const isValid = pristine.validate();
+
+    if (isValid) {
+      blockSubmitButton();
+      await callback(new FormData(form));
+      unblockSubmitButton();
+    }
+  });
+};
+
+export{setupForm, setOnFormSubmit, hideModal};
