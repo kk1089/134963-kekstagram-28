@@ -7,9 +7,6 @@ import { getData, sendData } from './api.js';
 import { showAlert } from './util.js';
 import {showErrorMessage,showSuccessMessage} from './form-mesage.js';
 
-setEffectsSlider();
-setScaleListener();
-setupForm();
 setOnFormSubmit(async (data) => {
   try {
     await sendData(data);
@@ -24,6 +21,9 @@ try {
   const data = await getData();
   renderPictures(data);
   setPictureListener(data);
+  setupForm(data);
+  setScaleListener();
+  setEffectsSlider();
 } catch (err) {
   showAlert(err.message);
 }
