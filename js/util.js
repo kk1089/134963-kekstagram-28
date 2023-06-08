@@ -1,15 +1,5 @@
 const ALERT_SHOW_TIME = 5000;
 
-// функия случайного числа из диапозона
-const getRandomInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-};
-  // Функиця по поиску случайного элемента в переданном массиве.
-const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
-
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
   alertContainer.style.zIndex = '100';
@@ -31,4 +21,4 @@ const showAlert = (message) => {
   }, ALERT_SHOW_TIME);
 };
 
-export {showAlert, getRandomInteger, getRandomArrayElement};
+export {showAlert};

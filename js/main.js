@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
 import { setPictureListener, renderPictures } from './miniatures.js';
-import { setupForm, setOnFormSubmit, hideModal } from './form.js';
+import { setupForm, setOnFormSubmit, hideModal, unblockSubmitButton } from './form.js';
 import { setEffectsSlider } from './effects.js';
 import { setScaleListener } from './scale.js';
 import { getData, sendData } from './api.js';
 import { showAlert } from './util.js';
-import {showErrorMessage,showSuccessMessage} from './form-mesage.js';
+import {showErrorMessage, showSuccessMessage} from './form-message.js';
 
 setOnFormSubmit(async (data) => {
   try {
@@ -14,6 +13,8 @@ setOnFormSubmit(async (data) => {
     showSuccessMessage();
   } catch {
     showErrorMessage();
+  } finally {
+    unblockSubmitButton();
   }
 });
 

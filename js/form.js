@@ -14,8 +14,8 @@ const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-я0-9]{1,19}$/i;
 const TAG_ERROR_TEXT = 'Хештеги введёны неверно.';
 const SubmitButtonText = {
-  IDLE: 'Сохранить',
-  SENDING: 'Сохраняю...'
+  IDLE: 'Опубликовать',
+  SENDING: 'Публикую...'
 };
 
 const pristine = new Pristine(form, {
@@ -45,7 +45,7 @@ const isElementFocus = () =>
   document.activeElement === descpriptionElement;
 
 function onDocumentKeydown(evt) {
-  if (evt.key === 'Escape' && !isElementFocus()) {
+  if (evt.key === 'Escape' && !isElementFocus() && !body.classList.contains('has-modal')) {
     evt.preventDefault();
     hideModal();
   }
@@ -99,10 +99,9 @@ const setOnFormSubmit = (callback) => {
 
     if (isValid) {
       blockSubmitButton();
-      await callback(new FormData(form));
-      unblockSubmitButton();
+      callback(new FormData(form));
     }
   });
 };
 
-export{setupForm, setOnFormSubmit, hideModal};
+export{setupForm, setOnFormSubmit, hideModal, unblockSubmitButton};
