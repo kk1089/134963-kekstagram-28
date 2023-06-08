@@ -1,5 +1,6 @@
 import {resetScale} from './scale.js';
 import {resetEffects} from './effects.js';
+import {isEscapeKey} from './util.js';
 
 const body = document.querySelector('body');
 const form = document.querySelector('.img-upload__form');
@@ -45,7 +46,7 @@ const isElementFocus = () =>
   document.activeElement === descpriptionElement;
 
 function onDocumentKeydown(evt) {
-  if (evt.key === 'Escape' && !isElementFocus() && !body.classList.contains('has-modal')) {
+  if (isEscapeKey(evt) && !isElementFocus() && !body.classList.contains('has-modal')) {
     evt.preventDefault();
     hideModal();
   }

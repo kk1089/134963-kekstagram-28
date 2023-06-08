@@ -1,9 +1,11 @@
+import { isEscapeKey } from './util.js';
+
 const successTemplate = document.querySelector('#success').content.querySelector('.success');
 const errorTemplate = document.querySelector('#error').content.querySelector('.error');
 
 function isEscPress(evt, callback) {
 
-  if (evt.key === 'Escape') {
+  if (isEscapeKey(evt)) {
     evt.preventDefault();
     callback();
   }

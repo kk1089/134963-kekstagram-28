@@ -1,3 +1,4 @@
+import {isEscapeKey} from './util.js';
 
 const bigPhoto = document.querySelector('.big-picture');
 const commentTemplate = bigPhoto.querySelector('.social__comment');
@@ -22,7 +23,7 @@ const hideBigPhoto = () => {
 };
 
 function onDocumentKeydown(evt) {
-  if (evt.key === 'Escape') {
+  if (isEscapeKey(evt)) {
     evt.preventDefault();
     hideBigPhoto();
   }
