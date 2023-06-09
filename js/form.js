@@ -1,6 +1,6 @@
-import {resetScale} from './scale.js';
-import {resetEffects} from './effects.js';
-import {isEscapeKey} from './util.js';
+import { resetScale } from './scale.js';
+import { resetEffects } from './effects.js';
+import { isEscapeKey } from './util.js';
 
 const body = document.querySelector('body');
 const form = document.querySelector('.img-upload__form');
@@ -94,7 +94,7 @@ const unblockSubmitButton = () => {
 };
 
 const setOnFormSubmit = (callback) => {
-  form.addEventListener('submit', async(evt) => {
+  form.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     const isValid = pristine.validate();
 
@@ -105,4 +105,4 @@ const setOnFormSubmit = (callback) => {
   });
 };
 
-export{setupForm, setOnFormSubmit, hideModal, unblockSubmitButton};
+export { setupForm, setOnFormSubmit, hideModal, unblockSubmitButton };

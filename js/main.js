@@ -4,7 +4,9 @@ import { setEffectsSlider } from './effects.js';
 import { setScaleListener } from './scale.js';
 import { getData, sendData } from './api.js';
 import { showAlert } from './util.js';
-import {showErrorMessage, showSuccessMessage} from './form-message.js';
+import { showErrorMessage, showSuccessMessage } from './form-message.js';
+import { showFilters, setDebouncedSort } from './filters.js';
+import { previewPicture } from './upload.js';
 
 setOnFormSubmit(async (data) => {
   try {
@@ -20,12 +22,16 @@ setOnFormSubmit(async (data) => {
 
 try {
   const data = await getData();
-  renderPictures(data);
   setPictureListener(data);
   setupForm(data);
   setScaleListener();
   setEffectsSlider();
+  showFilters();
+  previewPicture();
+  renderPictures(data);
+  setDebouncedSort(data);
 } catch (err) {
   showAlert(err.message);
 }
+
 
