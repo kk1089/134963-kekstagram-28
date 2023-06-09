@@ -1,5 +1,6 @@
 import {resetScale} from './scale.js';
 import {resetEffects} from './effects.js';
+import {isEscapeKey} from './util.js';
 
 const body = document.querySelector('body');
 const form = document.querySelector('.img-upload__form');
@@ -8,11 +9,15 @@ const overlay = document.querySelector('.img-upload__overlay');
 const uploadCancelButton = document.querySelector('#upload-cancel');
 const hashtagElement = document.querySelector('.text__hashtags');
 const descpriptionElement = document.querySelector('.text__description');
-// const submitButton = document.querySelector('.img-upload__submit');
+const submitButton = document.querySelector('.img-upload__submit');
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-я0-9]{1,19}$/i;
 const TAG_ERROR_TEXT = 'Хештеги введёны неверно.';
+const SubmitButtonText = {
+  IDLE: 'Опубликовать',
+  SENDING: 'Публикую...'
+};
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
@@ -41,7 +46,7 @@ const isElementFocus = () =>
   document.activeElement === descpriptionElement;
 
 function onDocumentKeydown(evt) {
-  if (evt.key === 'Escape' && !isElementFocus()) {
+  if (isEscapeKey(evt) && !isElementFocus() && !body.classList.contains('has-modal')) {
     evt.preventDefault();
     hideModal();
   }
@@ -78,5 +83,26 @@ const setupForm = () => {
   );
 };
 
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = SubmitButtonText.SENDING;
+};
 
-export{setupForm};
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = SubmitButtonText.IDLE;
+};
+
+const setOnFormSubmit = (callback) => {
+  form.addEventListener('submit', async(evt) => {
+    evt.preventDefault();
+    const isValid = pristine.validate();
+
+    if (isValid) {
+      blockSubmitButton();
+      callback(new FormData(form));
+    }
+  });
+};
+
+export{setupForm, setOnFormSubmit, hideModal, unblockSubmitButton};
