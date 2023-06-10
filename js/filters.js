@@ -12,10 +12,6 @@ const randomFilter = document.querySelector('#filter-random');
 const discussedFilter = document.querySelector('#filter-discussed');
 const filterButtons = document.querySelectorAll('.img-filters__button');
 
-const randomPictures = () => Math.random() - 0.5;
-
-const discussedPictures = (a, b) => b.comments.length - a.comments.length;
-
 const filterPictures = (pictures, sortButton) => {
 
   if (sortButton === defaultFilter) {
@@ -23,11 +19,11 @@ const filterPictures = (pictures, sortButton) => {
   }
 
   if (sortButton === randomFilter) {
-    return pictures.slice().sort(randomPictures).slice(0, RANDOM_PICTURES_COUNT);
+    return pictures.slice().sort(() => Math.random() - 0.5).slice(0, RANDOM_PICTURES_COUNT);
   }
 
   if (sortButton === discussedFilter) {
-    return pictures.slice().sort(discussedPictures);
+    return pictures.slice().sort((a, b) => b.comments.length - a.comments.length);
   }
 };
 
