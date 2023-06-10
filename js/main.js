@@ -5,8 +5,8 @@ import { setScaleListener } from './scale.js';
 import { getData, sendData } from './api.js';
 import { showAlert } from './util.js';
 import { showErrorMessage, showSuccessMessage } from './form-message.js';
-import { showFilters, setDebouncedSort } from './filters.js';
-import { previewPicture } from './upload.js';
+import { showFilters, setDebouncedFilter } from './filters.js';
+import { setPreviewPictureListener } from './upload.js';
 
 setOnFormSubmit(async (data) => {
   try {
@@ -27,9 +27,9 @@ try {
   setScaleListener();
   setEffectsSlider();
   showFilters();
-  previewPicture();
+  setPreviewPictureListener();
   renderPictures(data);
-  setDebouncedSort(data);
+  setDebouncedFilter(data);
 } catch (err) {
   showAlert(err.message);
 }

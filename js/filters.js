@@ -10,6 +10,7 @@ const filterForm = document.querySelector('.img-filters__form');
 const defaultFilter = document.querySelector('#filter-default');
 const randomFilter = document.querySelector('#filter-random');
 const discussedFilter = document.querySelector('#filter-discussed');
+const filterButtons = document.querySelectorAll('.img-filters__button');
 
 const randomPictures = () => Math.random() - 0.5;
 
@@ -30,24 +31,20 @@ const filterPictures = (pictures, sortButton) => {
   }
 };
 
-const removePictures = (pictures) => pictures.forEach((thumbnail) => thumbnail.remove());
+const removePictures = () =>
+  document.querySelectorAll('.picture').forEach((thumbnail) => thumbnail.remove());
 
 const setOnFilterClick = (evt, pictures) => {
-
-  defaultFilter.classList.remove('img-filters__button--active');
-  randomFilter.classList.remove('img-filters__button--active');
-  discussedFilter.classList.remove('img-filters__button--active');
+  filterButtons.forEach((button) => button.classList.remove('img-filters__button--active'));
 
   const filterButton = evt.target;
   filterButton.classList.add('img-filters__button--active');
-  const thumbnails = document.querySelectorAll('.picture');
 
-  removePictures(thumbnails);
-
+  removePictures();
   renderPictures(filterPictures(pictures, filterButton));
 };
 
-const setDebouncedSort = (pictures) => {
+const setDebouncedFilter = (pictures) => {
   filterForm.addEventListener('click', debounce((evt) => {
     setOnFilterClick(evt, pictures);
   }, TIMEOUT));
@@ -55,4 +52,4 @@ const setDebouncedSort = (pictures) => {
 
 const showFilters = () => imgFilters.classList.remove('img-filters--inactive');
 
-export { setDebouncedSort, showFilters };
+export { setDebouncedFilter, showFilters };
