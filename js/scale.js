@@ -15,24 +15,16 @@ const scaleImg = (value) => {
 
 const onSmallControlClick = () => {
   const newElement = parseInt(contollValue.value, 10);
-  let newValue = newElement - STEP;
+  const newValue = newElement - STEP < MIN_STEP ? MIN_STEP : newElement - STEP;
+  scaleImg(newValue);
 
-  if (newValue < MIN_STEP) {
-    newValue = MIN_STEP;
-  } else {
-    scaleImg(newValue);
-  }
 };
 
 const onbigControllClick = () => {
   const newElement = parseInt(contollValue.value, 10);
-  let newValue = newElement + STEP;
+  const newValue = newElement + STEP > MAX_STEP ? MAX_STEP : newElement + STEP;
+  scaleImg(newValue);
 
-  if (newValue > MAX_STEP) {
-    newValue = MAX_STEP;
-  } else {
-    scaleImg(newValue);
-  }
 };
 
 const resetScale = () => scaleImg(DEFAULT);
